@@ -3,6 +3,8 @@
 
 from bottle import route, run, template
 
+
+
 @route('/')
 def hello():
     return '<h1>hello world =D!</h1>'  
