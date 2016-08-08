@@ -38,14 +38,23 @@ und was für Auswirkungen er auf das Monster hat. das Monster hat eine set-statu
 mit der die Attribute (z.b. ein anderes Bild) des Monsters an den Status angepasst werden. 
 
 Die Monster- Klasse benötigt folgende Funktionen:
+    - Namen
     - Export der eigenen Daten (zum Speichern)
-    - set-status: Verändern der eigenen Daten (Status, Hunger-Variable)
-    - reduce(Wert, amount): setzt 
+    - set-status: Verändern der eigenen Daten: Status, Hunger-Variable)
+    - reduce(Wert, amount): setzt Wert herab
+    - add(WErt, amount): hebt Wert um amount an
+    
+    Optional:
+    - Birthday
+    - Alter
+    - Item: Monster kann ein Item halten
+    - Farbe: Spieler kann Monsterfarbe ändern
 
 Die Playerklasse benötigt:
     - Namen
     - VocPet
     - VocListe
+    - Punkte
 
 Voc-Klasse:
  - Begriff
@@ -94,9 +103,37 @@ Man könnte theoretisch die ganzen Daten per json senden, dann hätte man eine A
 Nun zu den Gamification-Dingen:
 Item, Archivements, Fortschrittsbalken (ich fürchte die muss man clientseitig per css oder javascript darstellen, da muss ich nochmal nachlesen..)
 
-Itemklasse:
+Items:
 Ein Item hat:
-    einen Preis (der Spieler hat das Geld in From von Punkten.)  
+    einen Preis (der Spieler hat das Geld in From von Punkten, Punkte gibt es bei richtigem Antworten auf Fragen.)  
+    eine Funktion, zb. Hunger-Counter erhöhen etc.
+    eine Bildchen/Icon
+    ggf. eine Beschreibung
+    Item halten sich erstmal ewig
 
- 
+Inventory:
+    im Besitz vom Spieler, sammelt die Items die der Spieler besitzt
+    sollte Infos über den Besitz des Spielers herausrücken, damit diese per Controller an GUI gesendet werden können, (vllt. im json-format bzw. als dictionary) um angezeigt zu werden
+    hat erstmal keine Platzbegrenzung
+
+Archivements:
+    Player erhält für das tun von Dingen Archievements.
+    Laut einem Buch ('Pattern für Spieleprogammierung') programmiert man diese Funktion die ein Archievement gibt nicht in andere unbeteiligte Berreiche, sondern nutzt das Observer-Pattern dafür.
+    Mal schauen ob ich das umsetzen kann. Erstmal betrachte ich Archivements auf 'nice to have + optional'.
+    Ein Archievement benötigt:
+    - Bild
+    - Beschreibung
+    - Ton?
+
+Archivementmanager: gehört zur logic, observiert und zählt Aktionen um Archievements zu vergeben
+Archivementliste: Hier kommen die Archievements rein, die der Player gesammelt hat
+
+Frageklasse:
+Diese Klasse ist die Elternklasse der verschiedenen Fragearten: 
+Erstmal machen wir nursowas wie eine Texteingabe-Klasse, oder eine MultipleChoice-Klasse.
+Die Frageklasse enthält bei MultipleChoice die Frage, die möglichen Antworten, die die Spieler wählen kann, und eine Liste welche Antworten ausgewählt werden müssen. 
+Das alles kann in einer Datei gespeichert un geladen werden. Am besten so dass der Spieler es nicht lesen kann, also z.B. gehasht.(Aber das ist optional und nice-to-have.)
+
+
+
 
