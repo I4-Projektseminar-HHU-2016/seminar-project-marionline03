@@ -1,6 +1,4 @@
 # Sorces used:  
-#
-#
 # Bottle Doku: bottlepy.org/docs/dev/index.thml
 
 from bottle import route, run, template
