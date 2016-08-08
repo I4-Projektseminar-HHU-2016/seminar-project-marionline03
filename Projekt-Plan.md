@@ -64,7 +64,39 @@ z.B. je nach repetition-point-anzahl.
 
 Timer-Klasse
 misst die fortgeschrittene Zeit und löst Events aus.
-Die Frage ist wie man nun die Gui automatisch per Bottle updatet. 
-So sollte auch das Monster animiert werden. Oder man mal eine gif-animation.
+Die Frage ist wie man nun die Gui automatisch per Bottle updatet. So sollte auch das Monster animiert werden. Oder man mal eine gif-animation..
+
+Nach einigem Versuchen stelle ich fest: Das scheint nicht einfach zu sein. 
+Alternativ kann man per javascript den Client die Seite immer wieder neu anfragn lassen. Das gefällt mir zwar nicht ganz, aber 
+es funktioniert. Habe ich im Netz gefunden, einmal das time interval und dann den Code um eine json Datei vom Bottle-Server anzufragen. 
+
+code: 
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
+    <script>
+        var myVar = setInterval(myTimer, 1000);
+        function myTimer() {
+            var d = new Date();
+            document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+            var my_data = "http://localhost:8080/json_data"; 
+            $.getJSON( my_data, function (data){getElementById('response').innerHTML = data.test;})
+            }
+    </script>
+</head>
+In der Variablen data.test und werden die daten aus der jsondatei gespeichert. Das ganze wird dann im html-tag mit der ID 'response' angezeigt.
+Diese Funktion ruft sich selbst jede Sekunde auf. 
+Man könnte theoretisch die ganzen Daten per json senden, dann hätte man eine API und könnte Clients mit beliebigen Programmen bauen. 
+(Das ist aber erstmal gar nicht Sinn der Sache.)
+
+Nun zu den Gamification-Dingen:
+Item, Archivements, Fortschrittsbalken (ich fürchte die muss man clientseitig per css oder javascript darstellen, da muss ich nochmal nachlesen..)
+
+Itemklasse:
+Ein Item hat:
+    einen Preis (der Spieler hat das Geld in From von Punkten.)  
+
  
 
