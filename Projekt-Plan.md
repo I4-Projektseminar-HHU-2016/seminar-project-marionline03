@@ -10,12 +10,16 @@ TODO: Bis Donnerstag fertig machen
   * Zeitplan
   * Vokabeln schon vorgeben erstmal nur 3 später 10
 
- 
 Klassen + Variablen
 technisch konkret
 Idee, allgemein
  
 -> Klassenaufbau
+Die Controllerklasse verwalte alles, die Spielerin, das Monster, den Timer (oder der Timer wandert in die Controllerklasse?).
+Die Gui sollte mit der Controllerklassekommunizieren, aber nicht darin enthalten sein, um Abhängigkeiten zu vermeiden. 
+Die Gui ist die Bottle-App, der Teil des Programms wo das Bottleframework eingesetzt wird. 
+Die Daten für die Gui kommen von der Controllerklasse. 
+
 
 Das Monster (Tamagochi) ist eine eigene Klasse.
 Die Monster hat Variablen:
@@ -24,7 +28,7 @@ Die Monster hat Variablen:
   - Hunger-Zähler
   - Status
   
-Den Name kann der Spieler ändern.
+Den Name kann die Spielerin ändern.
 Die HP (Health Points/Lebenspunkte) bei 0 ist das Monster tot.
 Der Hungerzähler wird herunter gezählt, 
 Status, gibt an in welchem Zustand das Monster ist. Es kann für den Anfang entweder normal oder hungrig sein.
@@ -45,6 +49,6 @@ Die Playerklasse benötigt:
     -
 
 Voc-Klasse:
-Begriff
-Bedeutung
-Hinweis-Feld
+ - Begriff
+ - Bedeutung
+ - Hinweis-Feld

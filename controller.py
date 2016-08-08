@@ -1,3 +1,7 @@
+from player import Player
+from pet import Pet
+
+
 
 class Controller:
     def __init__(self):
