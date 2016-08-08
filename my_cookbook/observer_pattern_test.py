@@ -19,11 +19,11 @@ class Subject():
             if client isinstance(Observer): # isinstance
                 client.receive(data)
             
-    def remove_client(client):
+    def remove_client(self, client):
         #TODO: wie löscht man nochmal elemente aus listen?  
         pass
         
-    def add_client(client):
+    def add_client(self, client):
         if client isinstance(client, Observer):
             self.clients.append(client)
         else:
