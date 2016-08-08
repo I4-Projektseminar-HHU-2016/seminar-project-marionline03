@@ -9,9 +9,12 @@ import datetime
 a = time.time()
 print("a is ", a)
 print("time is ", round(time.time()))
+print("The Time is ", datetime.datetime.fromtimestamp(time.time()))
 
 lasttime = round(time.time())
 while True:
     if round(time.time()) != lasttime:
         print(round(time.time()))
+        print(type(round(time.time())))
+        print("The Time is ", datetime.datetime.fromtimestamp(time.time()))
         lasttime= round(time.time())
