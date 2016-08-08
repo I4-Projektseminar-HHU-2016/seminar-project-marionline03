@@ -14,12 +14,12 @@ Klassen + Variablen
 technisch konkret
 Idee, allgemein
  
--> Klassenaufbau
-Die Controllerklasse verwalte alles, die Spielerin, das Monster, den Timer (oder der Timer wandert in die Controllerklasse?).
+Aufbau
+Die Controllerklasse verwaltet (fast) alles: die Spielerin/den Spieler, das Monster, den Timer(oder der Timer wandert in die Controllerklasse?), Vokabeln und Vokabellisten, Frage+Antwort-Klassen.
+Die Controllerklasse übernimmt das laden (und speichern?) von Daten.
 Die Gui sollte mit der Controllerklassekommunizieren, aber nicht darin enthalten sein, um Abhängigkeiten zu vermeiden. 
 Die Gui ist die Bottle-App, der Teil des Programms wo das Bottleframework eingesetzt wird. 
-Die Daten für die Gui kommen von der Controllerklasse. 
-
+Die Daten für die Gui kommen von der Controllerklasse. Die Controllerklasse sendet der Gui Daten was angezeigt werden soll.
 
 Das Monster (Tamagochi) ist eine eigene Klasse.
 Die Monster hat Variablen:
@@ -46,9 +46,25 @@ Die Playerklasse benötigt:
     - Namen
     - VocPet
     - VocListe
-    -
 
 Voc-Klasse:
  - Begriff
  - Bedeutung
  - Hinweis-Feld
+ - Bild
+ - Sprache = zur welcher Sprache gehört die Vokabel
+ - repetition_point = Wie häufig wurde die Vokabel schon richtig beantwortet. Die mit dem niedrigsten Wert wird dem Spieler vorgeschlagen. (Das ist ein einfache Version einen Wiederhohlungsmechanismus einzubauen.) 
+Zweite Möglichkeit wäre: due_time = Wann soll die Vokabel abgefragt werden als zeit-stempel. Das timer-Object wird dann um die Aktuelle Zeit angefragt und wenn diese größer ist als der Zeitstempel, dann wir die Vokabel abgefragt.
+Diese beiden Mechanismen kann man kombinieren und nur die Karten die Fällig sind nach repetition_point_anzahl sortiert anzeigen. 
+(Oh, sortieren könnte schwierig werden. Klasse an Attributeingeschaft sortieren... )
+
+VocListe:
+Die Voc-Liste beinhaltet meherer Listen in die die Vokabelkarten sortiert/gruppiert werden können,
+z.B. je nach repetition-point-anzahl. 
+
+Timer-Klasse
+misst die fortgeschrittene Zeit und löst Events aus.
+Die Frage ist wie man nun die Gui automatisch per Bottle updatet. 
+So sollte auch das Monster animiert werden. Oder man mal eine gif-animation.
+ 
+
