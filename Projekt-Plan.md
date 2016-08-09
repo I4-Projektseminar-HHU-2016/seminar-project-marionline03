@@ -1,18 +1,38 @@
-Projekt-Plan:
+#Projekt-Plan
 
-TODO: Bis Donnerstag fertig machen
+##TODO 
+Donnerstag fertig
 
-  * Bilder/Skizzen
-  * Womit realisieren? Bottle 
-  --> Problem: Bei Seitenneuladen Daten weg, d.h. Daten irgendwo speichern (man will ja sowieso eine Speicherfunktion haben)
+##Inhalt 
+* Projektidee vorstellen (Was ist das? Was wird das? Wozu? Was soll es können?)
+* Layout der Website 
+* Einzelne Funktionen und Klassen
+* Content
+
+### Idee
+Idee, allgemein
+
+### Ziel
   * Ziel: ein schönes kleines Projekt zum laufen bekommen 
   * Optional: Responsive Design
   * Zeitplan
   * Vokabeln schon vorgeben erstmal nur 3 später 10
 
-Klassen + Variablen
-technisch konkret
-Idee, allgemein
+
+### Umsetzung
+Bottle ein Webframework für Python + ein wenig HTML & CSS für Website
+
+
+Womit realisieren? Bottle 
+  --> Problem: Bei Seitenneuladen Daten weg, d.h. Daten irgendwo speichern (man will ja sowieso eine Speicherfunktion)
+
+### Layout
+Bilder/Skizzen von Layout
+
+### Funktionen und Klassen 
+mit Workarounds o.ä.,Klassen + Variablen, technisch konkret
+
+
  
 Aufbau
 Die Controllerklasse verwaltet (fast) alles: die Spielerin/den Spieler, das Monster, den Timer(oder der Timer wandert in die Controllerklasse?), Vokabeln und Vokabellisten, Frage+Antwort-Klassen.
@@ -79,22 +99,10 @@ Nach einigem Versuchen stelle ich fest: Das scheint nicht einfach zu sein.
 Alternativ kann man per javascript den Client die Seite immer wieder neu anfragn lassen. Das gefällt mir zwar nicht ganz, aber 
 es funktioniert. Habe ich im Netz gefunden, einmal das time interval und dann den Code um eine json Datei vom Bottle-Server anzufragen. 
 
-code: 
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
-    <script>
-        var myVar = setInterval(myTimer, 1000);
-        function myTimer() {
-            var d = new Date();
-            document.getElementById("demo").innerHTML = d.toLocaleTimeString();
-            var my_data = "http://localhost:8080/json_data"; 
-            $.getJSON( my_data, function (data){getElementById('response').innerHTML = data.test;})
-            }
-    </script>
-</head>
+code:    
+INSERT CODE HERE
+
+
 In der Variablen data.test und werden die daten aus der jsondatei gespeichert. Das ganze wird dann im html-tag mit der ID 'response' angezeigt.
 Diese Funktion ruft sich selbst jede Sekunde auf. 
 Man könnte theoretisch die ganzen Daten per json senden, dann hätte man eine API und könnte Clients mit beliebigen Programmen bauen. 
@@ -133,6 +141,11 @@ Diese Klasse ist die Elternklasse der verschiedenen Fragearten:
 Erstmal machen wir nursowas wie eine Texteingabe-Klasse, oder eine MultipleChoice-Klasse.
 Die Frageklasse enthält bei MultipleChoice die Frage, die möglichen Antworten, die die Spieler wählen kann, und eine Liste welche Antworten ausgewählt werden müssen. 
 Das alles kann in einer Datei gespeichert un geladen werden. Am besten so dass der Spieler es nicht lesen kann, also z.B. gehasht.(Aber das ist optional und nice-to-have.)
+
+### Content
+
+#### Graphiken:
+
 
 
 
