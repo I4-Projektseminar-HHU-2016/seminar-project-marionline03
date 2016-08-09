@@ -2,6 +2,11 @@ from bottle import Bottle, route, run, template, debug
 import time
 import datetime
 
+# Threads? :(
+import thread
+# import thread # http://www.tutorialspoint.com/python/python_multithreading.htm
+#thread.start_new_thread ( function, args[, kwargs] )
+
 
 class Observer:
     def __init__(self):
@@ -18,7 +23,10 @@ class Subject():
     def send(self, data):
         for client in self.clients:
                 client.receive(data)
-            
+                
+    def remove_client(self, client):
+        self.clients.remove(client)   
+    
     def add_client(self, client):
             self.clients.append(client)
         
@@ -60,7 +68,7 @@ class MyApp(Bottle):
 
 if __name__ == '__main__':
     app = MyApp('My-App')
-    timer = Timer()
+    # Hier: Timer-Klasse im neuen Thread starten: timer = Timer()
     timer.add_client(app)
     timer.send('test')
     
