@@ -20,8 +20,8 @@ class Subject():
                 client.receive(data)
             
     def remove_client(self, client):
-        #TODO: wie löscht man nochmal elemente aus listen?  
-        pass
+        # http://stackoverflow.com/questions/2793324/is-there-a-simple-way-to-delete-a-list-element-by-value-in-python
+        self.clients.remove(client)
         
     def add_client(self, client):
         if client isinstance(client, Observer):
