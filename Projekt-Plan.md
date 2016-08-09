@@ -1,7 +1,7 @@
 #Projekt-Plan
 
 ##TODO 
-Donnerstag fertig
+FERTIG SCHREIBEN
 
 ##Inhalt 
 * Projektidee vorstellen (Was ist das? Was wird das? Wozu? Was soll es können?)
@@ -10,45 +10,88 @@ Donnerstag fertig
 * Content
 
 ### Idee
-Idee, allgemein
+Ein Vokabellernprogramm das zum Vokabellernen motivieren soll.
+Der Spieler erhält für das richtige beantworten erhält der Spieler Punkte. 
+Diese Punkte werden für die Pflege eines Monsters verbraucht. Das Monster, welches ebenfalls benannt werden kann, wird nach einiger Zeit hungrig. Um das Monster zu Füttern kann der Player seine erspielten Punkte gegen Items, wie zb. Beeren oder Schokolade eintauschen mit denen die Kreatur gefüttert werden kann.
+Wird es nicht gefüttert wird das Monster hungriger, ist ein bestimmter Wert überschritten, dann verliert das Monster Lebenspunkte. Es verhungert!
+Somit funktioniert als "Punkte-Drain", so dass der Spieler ständig neue Punkte 'erlenen', bzw. erspielen muss.
+Das Monster selbst besitzt ein Alter und ein Level. Je mehr der Spieler lernt, desto mehr Erfahrungspunkte(Exp) erhält es. Wenn das Monster mehrere Level erreicht hat entwickelt es sich!
 
 ### Ziel
   * Ziel: ein schönes kleines Projekt zum laufen bekommen 
-  * Optional: Responsive Design
-  * Zeitplan
-  * Vokabeln schon vorgeben erstmal nur 3 später 10
+  * Optional: Responsive Design für kleinere Bildschrime
+  * Ein Zeitplan, bis wann soll was fertig werden. (Das kann man bei GitHub als Milestone eintragen)
+  * Ein kleines, schönes Programm das läuft
 
+#### Must-Have:
+  *
+  *
+  * Vokabeliste schon vorgeben mit 10 Vokabeln
+  
+#### Nice-to-Have:
 
 ### Umsetzung
-Bottle ein Webframework für Python + ein wenig HTML & CSS für Website
+Bottle (www.bottlepy.org/)ein Webframework für Python + ein wenig HTML & CSS für Website
 
+Problem:
 
-Womit realisieren? Bottle 
-  --> Problem: Bei Seitenneuladen Daten weg, d.h. Daten irgendwo speichern (man will ja sowieso eine Speicherfunktion)
+   * Bei Seitenneuladen Daten weg, d.h. Daten irgendwo speichern (man will ja sowieso eine Speicherfunktion)
 
 ### Layout
-Bilder/Skizzen von Layout
+Hier gehören Bilder, Skizzen von Layout hin
+
+Bild 1
+Funktionen:
+
+Menu: Vokabeln, Pet,  Shop 
+
+Lernen -> Testauswahl -> Lernbildschrim 
+Vokabeln -> Vokabeltabelle
+Shop -> Einkaufsbildschrim
+Pet -> Petstatus
+Player -> Playerstatus (+ Inventory) 
+
+Testauswahl: Player wählt Art des Abfrage aus
+-
+-
+
+Lernbildschrim: Player beantwortet Fragen, Fragen werden angezeigt bis Player 'zurück' klickt oder alle Vocs abgefragt wurden.   
+-
+-
+
+
+
+
+
 
 ### Funktionen und Klassen 
+
+
+### nicht so richtige Interaktivität
+Die Website fragt jede Minute den Server an.
+Der Server sendet dann die Websitedaten erneut.
+
+Das Anfrage geschieht über Javascript/jquery.
+
 mit Workarounds o.ä.,Klassen + Variablen, technisch konkret
 
-
- 
-Aufbau
-Die Controllerklasse verwaltet (fast) alles: die Spielerin/den Spieler, das Monster, den Timer(oder der Timer wandert in die Controllerklasse?), Vokabeln und Vokabellisten, Frage+Antwort-Klassen.
+## Aufbau
+Die Controllerklasse verwaltet (fast) alles: Player, Monster, Timer(oder der Timer wandert in die Controllerklasse?), Vokabeln und Vokabellisten, Frage-Antwort.
 Die Controllerklasse übernimmt das laden (und speichern?) von Daten.
 Die Gui sollte mit der Controllerklassekommunizieren, aber nicht darin enthalten sein, um Abhängigkeiten zu vermeiden. 
 Die Gui ist die Bottle-App, der Teil des Programms wo das Bottleframework eingesetzt wird. 
 Die Daten für die Gui kommen von der Controllerklasse. Die Controllerklasse sendet der Gui Daten was angezeigt werden soll.
 
+#### Monsterklasse 
 Das Monster (Tamagochi) ist eine eigene Klasse.
 Die Monster hat Variablen:
   - Name = Name des Monsters
   - HP = Lebenspunkte
   - Hunger-Zähler
   - Status
+
   
-Den Name kann die Spielerin ändern.
+Der Name kann geändert werden. 
 Die HP (Health Points/Lebenspunkte) bei 0 ist das Monster tot.
 Der Hungerzähler wird herunter gezählt, 
 Status, gibt an in welchem Zustand das Monster ist. Es kann für den Anfang entweder normal oder hungrig sein.
@@ -143,6 +186,7 @@ Die Frageklasse enthält bei MultipleChoice die Frage, die möglichen Antworten,
 Das alles kann in einer Datei gespeichert un geladen werden. Am besten so dass der Spieler es nicht lesen kann, also z.B. gehasht.(Aber das ist optional und nice-to-have.)
 
 ### Content
+
 
 #### Graphiken:
 
