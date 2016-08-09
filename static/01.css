@@ -1,0 +1,27 @@
+body{
+   background-color:silver;
+}
+
+nav{
+    margin:2%;
+    padding:2%;
+    border-style: solid;
+    background-color:skyblue;
+    border-radius:1em;
+}
+
+#box{
+    margin:2%;
+    padding:2%;
+    border-style: solid;
+    background-color:white;
+    border-radius:1em;
+}
+
+#box2{
+    margin:2%;
+    padding:2%;
+    border-style: solid;
+    background-color:grey;
+    border-radius:1em;
+}
