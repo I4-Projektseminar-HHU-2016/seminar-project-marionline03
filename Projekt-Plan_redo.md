@@ -1,16 +1,26 @@
 #Projekt-Plan
 
-##TODO 
-FERTIG SCHREIBEN
-
-##Inhalt 
-* Projektidee vorstellen (Was ist das? Was wird das? Wozu? Was soll es können?)
-* Layout der Website 
-* Einzelne Funktionen und Klassen
-* Content
-
 ### Idee
-Ein Vokabellernprogramm, das besonders gut zum lernen motivieren soll.Dazu wird ein Vokabeltrainer mit einem virtuellen Haustier kombiniert. 
+Ein Vokabellernprogramm, das besonders gut zum lernen motivieren soll. Dazu wird ein Vokabeltrainer mit einem virtuellen Haustier kombiniert. 
+
+### Was sind typische Elemente von Vokabeltrainersoftware?
+Mir bekannte Beispiele für Vokabeltrainersoftware sind unter anderem:
+  * Anki (http://ankisrs.net/)
+  * Memrise (https://www.memrise.com/)
+  * Mnemosyne (http://mnemosyne-proj.org/)
+
+#### Anki und Mnemosyne
+Anki und Mnemosyne sind OpenSource-Programme, sie laufen offline. Anki kann mit Plugins erweitert werden. Mnemosyne ebenfalls. Beide können über das Internet synchronisiert werden, um die Vokabeln auf dem gleichen Stand zu halten, wenn man von verschiedenen Geräten aus lernt. Die beiden Programme funktionieren nach dem Karteikartenkasten-Prinzip. Eine Frage wird angezeigt,wenn der Nutzer klickt erscheint die Antwort. Dann bewertet der Nutzer auf einer Skala wie schwer oder leicht ihm die Lösung fiel. Die Karte erhält dem entsprechend ein neues “Fälligkeitsdatum”,an dem sie dem Nutzer erneut angezeigt werden wird.
+
+#### Memrise
+Es handelt sich hierbei um ein kommerzielles Produkt, allerdings kann man es kostenlos nutzen. Memrise benötigt eine Internetverbindung und läuft im Browser. Für einige Smartphonebetriebssyteme gibt es kostenpflichtige Apps. Den Content, den man auf der Memrisewebsite erstellt, kann die Firma weiter nutzen. So füllen die Nutzer als Prosumer die Vokabeldatenbank. Memrise arbeitet mit Bildern, sogenannten Mems die einer Vokabel zugeordnet und bei fehlerhafter Antwort angezeigt werden, um das lernen zu erleichtern. Erstellte Bilder und Vokabeln, werden in Datenbanken gespeichert. Es gibt allgemeine Datenbanken, aus denen Nutzer Vokabeln beziehen können, sowie Datenbanken nur für bestimmte Kurse, bzw. Sprach-Kombinationen. Gewinn macht Memrise dadurch, dass die Nutzer gegen monatliche Gebühr ihre Accounts upgraden können, wodurch ihnen mehr Features zur Verfügung stehen.
+
+Von den drei Beispielen nutzt Memrise die meisten Gamificationelemente: Lernende erhalten Punkte für das erfolgreiche Beantworten der Vokabelabfragen. Die zu lernenden Vokabeln symbolisieren Blumen die gepflanzt werden sollen, durch Lernen gießt man sozusagen die Vokabel-Blumen. Auch werden Level benutzt: Mit bestimmter Punktanzahl steigen Nutzer auf und erhalten einen höheren Rang, dies zeigt sich am Logo.
+
+Das Programm ist gut gemacht, aber, nach einiger Zeit wird es langweilig und eintönig. Der Abstand gerade bei hohen Leveln ist sehr groß und die Punkte zu sammeln ist an sich sind ziemlich nutzlos.
+
+### Was ist ein Tamagochi?
+Tamagochi ist ein Spielzeug für Kinder, das ein Monster bzw. Haustier simuliert um das der Spieler sind kümmern muss, sonst stirbt es. Ja nachdem wie gut man das Tamagochi pflegt entwickelt es sich weiter, das heißt es ändert Form und Aussehen. Zu Zeiten des PokemonGo-Hypes, einem Spiel wo Spieler Monster fangen und großziehen um sie Kämpfen zu lassen, spricht wenig gegen das Spielelement Monsteraufzucht.
 
 #### Wie funktioniert das ganze?
 Der Spieler erhält für das richtige beantworten von Vokabelfragen Punkte.
@@ -33,6 +43,9 @@ Vielleicht ändern sich dann auch seine Essgewohnheiten, und es verlangt nach be
   * Items: Futter 
   * Export (json)
   * Vokabelliste schon vorgeben mit 10 Vokabeln
+  * Progressbar
+  * Dokumentation
+  * Animationen
   
 #### Nice-to-Have:
   * weitere Stati: Langeweile, Dreckig, Krank
@@ -42,6 +55,8 @@ Vielleicht ändern sich dann auch seine Essgewohnheiten, und es verlangt nach be
   * Lernmodus: 1-5 Wie gut gewusst
   * vorgefertigte Vokabellisten
   * Import (json)
+  * Badges
+  * Tutorial
 
 ### Umsetzung
 Eigentlich würde ich das ganze gerne als Multi-User Programm machen.
@@ -52,29 +67,35 @@ Bottle (www.bottlepy.org/)ein Webframework für Python + ein wenig HTML & CSS f�
 Das ist ein Kompromiss, ich kann dem Umgang mit einem Webframework üben, ohne mich um Probleme kümmern zu müssen, welche die Erstellung von die multi-user Software mitsichbringt.
 
 ### Layout und Funktionen
-Hier gehören Bilder, Skizzen von Layout hin
+Ich behalte mir vor das Layout und Design  zwecks usability und Ästetik anzupassen, (vorallem in der Betatestphase).
 
-Bild 1
-Funktionen:
 
-Menu: Vokabeln, Pet,  Shop 
+#### Hauptbildschirm
+[[http://up.picr.de/26466728za.png]]
 
-Lernen -> Testauswahl -> Lernbildschrim 
-Vokabeln -> Vokabeltabelle
-Shop -> Einkaufsbildschrim
-Pet -> Petstatus
-Player -> Playerstatus (+ Inventory) 
+#### Mulpiplechoicelernbildschirm 
+[[http://up.picr.de/26466740ct.png]]
 
-Testauswahl: Player wählt Art des Abfrage aus
-  
-  * Multiple Choice
-  * (Texteingabe) 
+#### Lernmodus wählen
+[[http://up.picr.de/26466727sz.png]]
 
-Lernbildschirm: 
+#### Item einkauf:
+[[http://up.picr.de/26466726fb.png]]
 
-  * Player beantwortet Fragen   
-  * Fragen werden angezeigt bis Player 'zurück' klickt oder alle Vocs abgefragt wurden
+#### Vokabelliste
+[[http://up.picr.de/26466732ec.png]]
 
+#### Inventar
+[[http://up.picr.de/26466730wb.png]]
+wird wohl noch überarbeitet, es sieht aus wie der Einkaufsbildschrim.
+
+#### Einstellungen
+[[http://up.picr.de/26466731ao.png]]
+
+#### Skizze des Monsters
+[[http://up.picr.de/26466742nx.png]]]
+Das Monster wurde kurzerhand zum Alien erklärt, das menschliche Sprachen lernen will.
+Das wäre die 'Geschichte' des Spiels.
 
 ### Objekte des Spiels:
 
@@ -132,7 +153,7 @@ Außerdem sieht er hier alle Archivements aufgelistet.
 Übersetzbarkeit der Website, hierfür wird der Text in eine eingene Pythondatei geschrieben und geladen wenn benötigt.
 
 ###Probleme
-### Kein Steicherung von Zuständen(?)
+### Kein Speicherung von Zuständen(?)
 Bei Seitenneuladen Daten weg, 
 Workaround: Daten irgendwo speichern (man will ja sowieso eine Speicherfunktion)
     
