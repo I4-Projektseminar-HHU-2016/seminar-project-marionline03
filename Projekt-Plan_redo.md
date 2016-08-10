@@ -49,10 +49,9 @@ Das wird mir im Rahmen des Projekts nicht gelingen.
 
 #### Warum im Webbrowser? 
 Bottle (www.bottlepy.org/)ein Webframework für Python + ein wenig HTML & CSS für Website
+Das ist ein Kompromiss, ich kann dem Umgang mit einem Webframework üben, ohne mich um Probleme kümmern zu müssen, welche die Erstellung von die multi-user Software mitsichbringt.
 
-Das ist ein Kompromiss, ich kann dem Umgang mit einem Webframework üben und 
-
-### Layout
+### Layout und Funktionen
 Hier gehören Bilder, Skizzen von Layout hin
 
 Bild 1
@@ -79,24 +78,28 @@ Lernbildschirm:
 
 ### Objekte des Spiels:
 
-## Spieler
+#### Spieler
 Der Spieler hat ein Bild, einen Namen und Punkte, eine Vokabelliste, die Vokabeln beinhaltet, ein Inventory das Items beinhaltet und sein Vokabel-Monster.
 
-## Monster 
+#### Monster 
 Das Monster hat einen Namen. Der Name kann geändert werden.
 Das Monster hat Lebenspunkte (HP), ein Level, Erfahrungspunkte (Exp), einen Hungerwert, einen Pfad zu einem Bild,  einen Status. Der Status kann verschiedene Werte haben:
 hunger oder normal. Ist das Monster hungrig, sinkt der Hungerwert des Monsters. Ist dieser Hungerwert bei 0 sinken die HP des Monsters. Sind diese <= 0 dann ist das Monster tot und der Spieler erhält ein neues.
 Lernt der Spieler Vokabeln steigen die Exp der Monsters, ist ein Bestimmter Wert erreicht steigt sein Level an (und die Exp werden wieder auf 0 gesetzt).
 
-## Item
+#### Item
 Items haben ein Bild, einen Preis, ggf. eine Beschreibung und einen Nutzen.
 Ein Nutzen wäre z.B. dass das Monster satt wird, wenn man es mit Schokolade füttert.
 
-## Vokabelliste  
+#### Inventory
+Es ist im Besitz des Spielers und sammelt die Items die der Spieler besitzt. 
+Die Items und Informationen über die Items werden im Client dargestellt.
+
+#### Vokabelliste  
 Die Vokabelliste beinhaltete Vokabeln.
 Die Vokabeln werden aus der Liste raus in weitere Listen sortiert: alle aktiven Vokabeln in eine eigene Liste, alle ungesehenen Vokabeln in eine Liste, alle fälligen Vokabeln in eine eigene Liste. Die Anzahl der Listenelemente wird wieder auf der Website angezeigt und aktualisiert.
 
-## Voc
+#### Voc
 Ein 'Voc' stellt eine Vokabelkarte da. Sie hat einen Begriff (die Frage) und eine Bedeutung (die gesuchte Antwort). zwecks usability hat ein 'Voc' auch ein Hinweis-Feld, ein Feld wo ein Bild angegeben werden kann, einen Vermerkt um welche Sprache es sich handelt. 
 Ein Voc hat repetition_points, die messen wie häufig wurde die Vokabel schon richtig beantwortet wurde.Die mit dem niedrigsten Wert kann dem Spieler vorgeschlagen werden. (Das ist ein einfache Version einen Wiederhohlungsmechanismus einzubauen.) 
 Außerdem haben Voc ein Fälligkeitsdatum, einen Zeitstempel. Ist dieser größer als die aktuelle Zeit, ist die Vokabel fällig und soll abgefragt werden. Diese beiden Mechanismen kann man kombinieren und nur die Karten die Fällig sind nach repetition_point_anzahl sortiert anzeigen. (Sortieren könnte gegebenfalls schwierig werden. Klasse an Attribut-Eingenschaft sortieren... )
@@ -105,60 +108,28 @@ Außerdem haben Voc ein Fälligkeitsdatum, einen Zeitstempel. Ist dieser größe
 Die Voc-Liste beinhaltet mehrerer Listen in die die Vokabelkarten sortiert/gruppiert werden können,
 z.B. je nach repetition-point-anzahl. 
 
-Timer-Klasse
-misst die fortgeschrittene Zeit und löst Events aus. Die Frage ist wie man nun die Gui automatisch per Bottle updatet. So sollte auch das Monster animiert werden. Oder man mal eine gif-animation..
+#### Fragen+Antworten
+Die Frage mit der richtigen Lösung muss auf dem Server gespeichert werden, denn beim Laden der Seite vergisst der Server alles. Die Frage-object erhält diese Daten, es enthält alle Informationen für die Gui, die gebraucht werden um die Vokabelabfragen durchzuführen und um die falschen und richtigen Antworten dem Spieler anzuzeigen. Das ist wichtig für den Lerneffekt. Bei unterschiedlichen Abfragearten werden unterschiedliche Daten benötigt, es müssen unterschiedliche Elemente (Eingabefelder, Buttons, ...) auf der Website dargestellt werden. 
+  
+#### Archivement
+Ein Archivement erhält ein Spieler durch eine Handlung oder eine Anzahl von Handlungen.
+Ein Archievement ist eine Belohnung. Es belohnt mit einem Bild, Items und Exp und soll zu noch mehr Leistung motivieren. Es gibt Ketten von Archievements, die schwittweise in der Schwierigkeit steigen. Beispiel: 
+  * Archievement 1: füttere das Monster mit 5 Beeren, 
+  * Archivement 2: füttere das Monster mit 10 Beeren.
+Die Archivements sieht man auf der Player-Status-Seite, wo auch Einstellungen vorgenommen werden können.
+Für welche Aktionen man Archivements erhält wird nicht bekannt gegeben, bis man das Archivement erhält.
+Die neusten, erspielen Archivemnts (5 Stück?) werden auf der Hauptseite angezeigt.
 
-Nach einigem Versuchen stelle ich fest: Das scheint nicht einfach zu sein. 
-
-#### Alternativlösung:
-Alternativ kann man per javascript den Client die Seite immer wieder neu anfragen lassen. Ist zwar nicht ganz so gut, aber es funktioniert. Habe ich im Netz gefunden, einmal das time interval und dann den Code um eine json Datei vom Bottle-Server anzufragen. 
-
-code:    
-INSERT CODE HERE
-
-
-### Gamification 
-Nun zu den Gamification-Dingen:
-Item, Archivements, Fortschrittsbalken. Wie wird das clientseitig dargestellt? 
-
-Items:
-Ein Item hat:
-    einen Preis (der Spieler hat das Geld in From von Punkten, Punkte gibt es bei richtigem Antworten auf Fragen.)  
-    eine Funktion, zb. Hunger-Counter erhöhen etc.
-    eine Bildchen/Icon
-    ggf. eine Beschreibung
-    Item halten sich erstmal ewig
-
-Inventory:
-    im Besitz vom Spieler, sammelt die Items die der Spieler besitzt
-    sollte Infos über den Besitz des Spielers herausrücken, damit diese per Controller an GUI gesendet werden können, (vllt. im json-format bzw. als dictionary) um angezeigt zu werden
-    hat erstmal keine Platzbegrenzung
-
-Archivements:
-    Player erhält für das tun von Dingen Archievements.
-    Laut einem Buch ('Pattern für Spieleprogammierung') programmiert man diese Funktion die ein Archievement gibt nicht in andere unbeteiligte Berreiche, sondern nutzt das Observer-Pattern dafür.
-    Mal schauen ob ich das umsetzen kann. Erstmal betrachte ich Archivements auf 'nice to have + optional'.
-    Ein Archievement benötigt:
-    * Bild
-    * Beschreibung
-    * Ton?
-
-Archivementmanager: gehört zur logic, observiert und zählt Aktionen um Archievements zu vergeben
-Archivementliste: Hier kommen die Archievements rein, die der Player gesammelt hat
-
-Frageklasse:
-Diese Klasse ist die Elternklasse der verschiedenen Fragearten: 
-Erstmal machen wir nursowas wie eine Texteingabe-Klasse, oder eine MultipleChoice-Klasse.
-Die Frageklasse enthält bei MultipleChoice die Frage, die möglichen Antworten, die die Spieler wählen kann, und eine Liste welche Antworten ausgewählt werden müssen. 
-Das alles kann in einer Datei gespeichert un geladen werden. Am besten so dass der Spieler es nicht lesen kann, also z.B. gehasht.(Aber das ist optional und nice-to-have.)
-
-### Content
-
-
+#### Playerstatusseite:
+Hier kann der Spieler sein Icon auswählen, einen Namen und seine Schriftfarbe/oder das Layout ändern.
+Außerdem sieht er hier alle Archivements aufgelistet.      
+  
 #### Graphiken:
 
+### Weitere Sachen, die man bedenken kann:
 
-
+#### Übersetzbarkeit:
+Übersetzbarkeit der Website, hierfür wird der Text in eine eingene Pythondatei geschrieben und geladen wenn benötigt.
 
 ###Probleme
 ### Kein Steicherung von Zuständen(?)
