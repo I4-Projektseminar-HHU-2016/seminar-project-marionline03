@@ -74,26 +74,26 @@ Ich behalte mir vor das Layout und Design  zwecks usability und Ästetik anzupas
 ![](http://up.picr.de/26466728za.png)
 
 #### Mulpiplechoicelernbildschirm 
-[[http://up.picr.de/26466740ct.png]]
+![](http://up.picr.de/26466740ct.png)
 
 #### Lernmodus wählen
-[[http://up.picr.de/26466727sz.png]]
+![](http://up.picr.de/26466727sz.png)
 
 #### Item einkauf:
-[[http://up.picr.de/26466726fb.png]]
+![](http://up.picr.de/26466726fb.png)
 
 #### Vokabelliste
-[[http://up.picr.de/26466732ec.png]]
+![](http://up.picr.de/26466732ec.png)
 
 #### Inventar
-[[http://up.picr.de/26466730wb.png]]
+![](http://up.picr.de/26466730wb.png)
 wird wohl noch überarbeitet, es sieht aus wie der Einkaufsbildschrim.
 
 #### Einstellungen
-[[http://up.picr.de/26466731ao.png]]
+![](http://up.picr.de/26466731ao.png)
 
 #### Skizze des Monsters
-[[http://up.picr.de/26466742nx.png]]]
+![](http://up.picr.de/26466742nx.png)
 Das Monster wurde kurzerhand zum Alien erklärt, das menschliche Sprachen lernen will.
 Das wäre die 'Geschichte' des Spiels.
 
