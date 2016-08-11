@@ -2,7 +2,17 @@
 <html>
 <head>
     <link rel="stylesheet" href="/01.css" type="text/css"> 
+    <!-- use jquery -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
     <title> Workingtitle </title>
+    <!-- Script for reloading page-->
+    <script>
+        var myVar = setInterval(myTimer, {{interval}});
+        function myTimer() {
+            location.reload();
+        }
+    </script>
 </head>
 <body>
     <header>    
