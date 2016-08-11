@@ -71,7 +71,7 @@ Ich behalte mir vor das Layout und Design  zwecks usability und Ästetik anzupas
 
 
 #### Hauptbildschirm
-[[http://up.picr.de/26466728za.png]]
+![](http://up.picr.de/26466728za.png)
 
 #### Mulpiplechoicelernbildschirm 
 [[http://up.picr.de/26466740ct.png]]
