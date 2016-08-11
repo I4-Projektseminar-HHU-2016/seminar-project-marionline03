@@ -9,7 +9,6 @@ from do_not_upload import STATIC_FILES_PATH
 def show_inventory():
     pass
     
-
 # if user klicks something
 @route('/inventory')
 def handle_inventory_event():
@@ -40,6 +39,7 @@ def give_static(filename):
 
 @route('/')
 def hello():
-    return template('page', menu=[('Learn','/learnmode'),('items','/inventory'),('words', '/wordlist'),('Buy','/buy'),('Player','/settings')], pet_image='dummy.png', content='bla bla bla')
+    return template('page', 
+    menu=[('Learn','/learnmode', 'button_learn.png'),('items','/inventory', 'button_inventory.png'),('Buy','/buy', 'button_buy.png'),('words', '/wordlist', 'button_words.png'),('Player','/settings', 'button_settings.png')], pet_image='dummy.png', content='bla bla bla', badges=['Badge A','Badge B','Badce C', 'Badge D', 'Badge E'])
 
 run(host='localhost', port=8080, reloader=True)
