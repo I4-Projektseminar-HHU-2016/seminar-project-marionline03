@@ -8,13 +8,15 @@
     <header>    
         <nav>
             %for element in menu:
-                <a href=' {{element[1]}} '> {{element[0]}} </a>
+                <a href='{{element[1]}}'> 
+                    <img src='{{element[2]}}' alt='{{element[0]}}'>
+                </a>
             %end
         </nav>
+    </header>    
         <section id='box'>
             <div id='box2'>
                 <figure><img src={{pet_image}} alt="dummy logo of pet monster" width='300' height='300'> </figure>
-                <p> {{content}}</p>
             </div>
             <div id='box2'>
                 <p>Name: ALIEN</p>
@@ -23,7 +25,13 @@
                 <p>Exp: 0/100</p>
             </div>
         </div>
-
+        <div id='badges_container'>
+            <ul>
+            %for badge in badges:
+                <li>{{badge}}</li>
+            %end
+            </ul>    
+        </div>
         </section>
     </header>
 </body>
