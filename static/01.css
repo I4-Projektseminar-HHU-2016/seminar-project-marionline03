@@ -12,14 +12,35 @@ nav{
     border-radius:1em;
 }
 
-
 nav a{
     text-align: center;
     margin:2%;
-    padding:2%;
-    border-style: solid;
-    background-color:blue;
-    border-radius:100%;
+    padding-left:2%;
+}
+
+nav a:link{
+    text-align: center;
+    margin:2%;
+    padding-left:2%;
+}
+
+nav a:hover{
+    text-align: center;
+    margin:2%;
+    padding-left:2%;
+}
+
+nav a:active{
+    text-align: center;
+    margin:2%;
+    padding-left:2%;
+}
+
+nav a img{
+    border:0;
+    width:10%;
+    height:10%;
+    padding-left:2%;
 }
 
 #box{
@@ -38,4 +59,17 @@ nav a{
     border-style: solid;
     background-color:grey;
     border-radius:1em;
+}
+
+#badges_container{
+   background-color:skyblue;
+   border: 0.2em;
+   border-style:solid; 
+   margin:5%;
+   padding:2%;
+   float:both;
+   position:absolute;
+   right: 0.5%;
+   top: 25%;
+   border-radius:1em;
 }
