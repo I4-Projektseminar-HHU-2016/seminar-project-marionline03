@@ -12,10 +12,15 @@
             %end
         </nav>
         <section id='box'>
-            <h1>{{heading}}</h1>
             <div id='box2'>
-                <figure><img src='dummy.png' alt="dummy logo of pet monster"> </figure>
+                <figure><img src={{pet_image}} alt="dummy logo of pet monster" width='300' height='300'> </figure>
                 <p> {{content}}</p>
+            </div>
+            <div id='box2'>
+                <p>Name: ALIEN</p>
+                <p>Age: 0 Days</p>
+                <p>Level: 0</p>
+                <p>Exp: 0/100</p>
             </div>
         </div>
 
