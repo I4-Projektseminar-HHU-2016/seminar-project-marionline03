@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title> Workingtitle </title>
     <link rel="stylesheet" href="/01.css" type="text/css"> 
     <!-- use jquery -->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
-    <title> Workingtitle </title>
+    
     <!-- Script for reloading page-->
+    <!-- found at: 
+        http://www.w3schools.com/jsref/met_win_setinterval.asp, 
+        http://stackoverflow.com/questions/12038183/refresh-page-for-interval-using-js#12038226
+        http://stackoverflow.com/questions/12399952/only-reload-a-part-of-a-web-page
+    -->
     <script>
-        var myVar = setInterval(myTimer, {{interval}});
+        <!-- jQuery('#pet_img').load('/pet_image');-->
+        var myVar = setInterval(myTimer, {{interval}} );
         function myTimer() {
             location.reload();
         }
@@ -25,12 +32,15 @@
         </nav>
     </header>    
         <section id='box'>
+            <p id="a"></p>
             <div id='box2'>
-                <figure><img src={{pet_image}} alt="dummy logo of pet monster" width='300' height='300'> </figure>
+                <figure><img id='pet_img' src={{pet_image}} alt="dummy logo of pet monster" width='300' height='300'> </figure>
             </div>
             <div id='box2'>
                 <p>Name: ALIEN</p>
                 <p>Age: 0 Days</p>
+                <p>Status: {{pet_status}}<p>
+                <p>Hungry in: {{pet_hunger}}</p>
                 <p>Level: 0</p>
                 <p>Exp: 0/100</p>
             </div>

@@ -1,6 +1,6 @@
 from status import status
 
-class pet
+class pet():
     def __init__(self, name):
         self.name = name
         self.hp = 100

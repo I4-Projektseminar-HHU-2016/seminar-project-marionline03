@@ -67,7 +67,7 @@ nav a img{
    border-style:solid; 
    margin:5%;
    padding:2%;
-   float:both;
+   /*float:both; */
    position:absolute;
    right: 0.5%;
    top: 25%;

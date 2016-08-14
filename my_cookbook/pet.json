@@ -1,0 +1,1 @@
+{"level": 0, "imagelist": ["hungry.png", "hungry01.png"], "image": "dummy.png", "name": "Alien", "hp": 100, "exp": 0, "status": "hungry", "hungry_in": 0, "known_states": [{"value": 0, "image_list": ["hungry.png", "hungry01.png"], "name": 0}]}
