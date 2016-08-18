@@ -4,25 +4,34 @@ import json
 # frei nach:
 # automate the boring stuff chapter 15 + json in der python doku
 
-# Zeit lesen und schreiben als txt datei
-
-# Zeit wird in json-Datei geschrieben
-# Zeit wird beim nächsten Start eingelesen
-
 current_time = time.time()
 print("The Time is ", datetime.datetime.fromtimestamp(current_time))
 
-with open("time.txt", 'w') as data: 
+add_on= input('how many sce to wait?')
+
+with open("time.txt", 'w') as data:
+    current_time += int(add_on) 
     data.write(str(current_time))
 
 input('Continue?') #wait here
 
 with open('time.txt', 'r') as data:
     imported_data = data.read()
-    print(imported_data)
-    print("time is ", datetime.datetime.fromtimestamp(current_time))
     a = float(imported_data)
-    print(a)
-    print("imported time is ", datetime.datetime.fromtimestamp(a))
+    b = datetime.datetime.fromtimestamp(a)
+    print("imported time is ",b)
 
+# do maths 
+#datetime.datetime.fromtimestamp(a)
+while time.time()<= a:
+    print(time.time())
+    print(a)
+    print('waitig for event')
+    input('continue?')
+else:
+    print(time.time())
+    print(a)
+    print('Event already happend')
     
+# datetime.datetime.fromtimestamp(value)
+# datetime.datetime.fromtimestamp(time.time())
