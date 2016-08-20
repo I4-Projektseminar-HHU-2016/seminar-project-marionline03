@@ -73,3 +73,8 @@ nav a img{
    top: 25%;
    border-radius:1em;
 }
+
+#question{
+    font-style: bold;
+    color: skyblue;
+}

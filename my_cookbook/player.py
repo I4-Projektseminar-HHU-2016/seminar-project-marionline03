@@ -3,17 +3,19 @@ class Player():
         self.name = name
         self.image = image
         self.score = score
-        self.badges = ['Badge A','Badge B','Badce C', 'Badge D', 'Badge E']
+        self.possible_badges = badges
+        self.has_badges = []
+        self.progressing_badges  = []
         
     def change_name(name):
         pass
 
-    def increase_scrore(amount):
-        pass
+    def increase_scrore(self, amount):
+        self.score += amount
         
-    def get_badge(badge):
+    def get_badge(self, badge):
         #badge.check() <- badge checks for following badges, e.g. badge A hat a A2 Badge that follows
         pass
     
-    def change_image(imagefile):
+    def change_image(self, imagefile):
         pass

@@ -45,6 +45,24 @@
                 <p>Exp: 0/100</p>
             </div>
         </div>
+        <div id=test>
+            <div>  
+                <h2>Due Words:</h2>
+                %for element in due_list:
+                    <p>{{element.question}}</pp>
+                %end      
+            </div>
+            <div>
+                <h2>Words for later:</h2>
+                %for element in wait_list:
+                    <p>{{element.question}}</pp>
+                %end
+            </div>
+            <form action="/feed_item" method="post">
+                <input name="food" value="berry" type="submit">Berry</input>
+                <input name="food" value="raspberry" type="submit">Raspberry</input>
+            </form>
+        </div>
         <div id='badges_container'>
             <ul>
             %for badge in badges:

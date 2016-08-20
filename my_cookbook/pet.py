@@ -15,5 +15,9 @@ class Pet():
         for status in self.known_states.keys(): 
             self.known_states[status].decrease_attribute(self)  
         
-    def change_name(name):
+    def change_name(self, name):
         self.name = name
+    
+    def receive_food(self, food):
+        # TODO: think about this,  at the momement each new state needs such a function
+        self.known_states['hungry'].value += food.value
