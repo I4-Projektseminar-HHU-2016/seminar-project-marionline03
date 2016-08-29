@@ -1,3 +1,6 @@
+
+BADGES = []
+
 class Badge():
     def __init__(self, name, description, image, has_player_badge, action_list, progress_per_action):
         self.name = name
@@ -29,5 +32,11 @@ class Badge():
         else:
             return False
             
-welcome_badge = Badge('welcome!','create an account','path/to/image', False, ['start-playing'], 100)
-gave_10_berries_to_pet = Badge('caretaker','gave 10 berries to pet','path/to/image',False, ['feed_item'], 10)
+welcome_badge = Badge('welcome','create an account','path/to/image', False, ['start-playing'], 100)
+gave_10_berries_to_pet = Badge('caretaker I','gave 10 berries to pet','path/to/image',False, ['feed_item'], 10)
+gave_50_berries_to_pet = Badge('caretaker II','gave 10 berries to pet','path/to/image',False, ['feed_item'], 2)
+gave_100_berries_to_pet = Badge('caretaker III','gave 10 berries to pet','path/to/image',False, ['feed_item'], 1)
+gave_200_berries_to_pet = Badge('caretaker IV','gave 10 berries to pet','path/to/image',False, ['feed_item'], 0.5)
+
+BADGES.append(welcome_badge)
+BADGES.append(gave_10_berries_to_pet)

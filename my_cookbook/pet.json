@@ -1,1 +1,1 @@
-{"level": 0, "hungry_in": 10, "known_states": [{"name": 92, "image_list": ["hungry.png", "hungry01.png"], "value": 92}], "hp": 100, "name": "Alien", "image": "dummy.png", "exp": 0, "status": "normal", "imagelist": ["hungry.png", "hungry01.png"]}
+{"exp": 0, "name": "Alien", "hungry_in": 10, "known_states": [{"value": 4, "name": 4, "image_list": ["hungry.png", "hungry01.png"]}, {"value": 10, "name": 10, "image_list": ["dummy.png", "dummy01.png", "dummy02.png"]}], "hp": 100, "imagelist": ["hungry.png", "hungry01.png"], "level": 0, "status": "normal", "image": "dummy.png"}

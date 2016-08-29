@@ -66,7 +66,7 @@
         <div id='badges_container'>
             <ul>
             %for badge in badges:
-                <li>{{badge}}</li>
+                <li>{{badge.name}}: {{badge.player_progress_for_badge}}</li>
             %end
             </ul>    
         </div>

@@ -33,7 +33,7 @@ class Normal(Status):
     def decrease_attribute(self, obj):
         pass  # soll nicht normal werden wenn zeit abläuft!
     
-    def set_normal(self, obj):
+    def set(self, obj):
         # set status 
         obj.status = self
         obj.image_list = self.image_list
