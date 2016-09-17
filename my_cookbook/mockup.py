@@ -25,8 +25,9 @@ datamanager = Datamanager()
 
 def make_status_obj(status_dict):
     print(status_dict)
+    print("make_status_obj: status_dict['name'] :", status_dict['name'])
     if status_dict['name'] == 'hungry':
-        hungry = Hungry(status_dict['name'],status_dict['value'], status_dict['image_list'])
+        hungry = Hungry(status_dict['name'], status_dict['value'], status_dict['image_list'])
         return hungry
     elif status_dict['name'] == 'normal':
         normal = Normal(status_dict['name'],status_dict['value'], status_dict['image_list'])

@@ -1,6 +1,6 @@
 #from pet import Pet
 #import datamanager
-from status import Hungry, hungry, normal
+from status import Hungry, Normal, hungry, normal
 #pet = Pet()
 import json
 
@@ -14,7 +14,6 @@ def read_json_data(filepath):
 def write_json_data(filepath, data):    
     with open(filepath, 'w') as json_file:
         json.dump(data, json_file)
-
 
 # test: 
 

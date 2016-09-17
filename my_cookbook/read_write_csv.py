@@ -23,7 +23,7 @@ class Datamanager():
         with open(filepath, 'r') as json_data:
             data=json.load(json_data)
             for element in data.items():
-                #jzint("{}:{}--{}".format(type(element[1]), element[0], element[1]))
+                #print("{}:{}--{}".format(type(element[1]), element[0], element[1]))
                 return data  
         
     def write_json_data(self, filepath, data):    

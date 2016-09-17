@@ -38,6 +38,7 @@ class Normal(Status):
         obj.status = self
         obj.image_list = self.image_list
         print("Hello! I am fine!")
-        
+
+#TODO: this has to be created, read from a file!        
 normal = Normal('normal', 10, ["dummy.png", "dummy01.png", "dummy02.png"])
 hungry = Hungry('hungry', 10, ["hungry.png","hungry01.png"])
