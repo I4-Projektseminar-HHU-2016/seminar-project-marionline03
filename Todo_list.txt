@@ -1,7 +1,0 @@
-Todo-Liste:
-
-1. git auf PC zum laufen bringen
-2. git Befehle sammeln zum nachschlagen
-3.1. Projektidee skizzieren
-3.2. Programmplanung im Detail
-3.3. Bilder vom Monster
