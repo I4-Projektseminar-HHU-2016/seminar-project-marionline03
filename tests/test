@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/01.css" type="text/css"> 
+        <!-- use jquery -->
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
+    <!-- found at: 
+        http://www.w3schools.com/jsref/met_win_setinterval.asp, 
+        http://stackoverflow.com/questions/12038183/refresh-page-for-interval-using-js#12038226
+        http://stackoverflow.com/questions/12399952/only-reload-a-part-of-a-web-page
+        http://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb -->
+        <script>  
+        $.getJSON('http://localhost:8080/update', function(data){
+            //console.log(data);
+            // data.msg = data['msg'] in python
+            $('#test').append("<p>"+ data[0].tile +"</p>")
+            data_length = data.length;
+            console.log(data_length); 
+        }); 
+            /*
+            $.getJSON('http://localhost:8080/update', function(data){
+                // data.msg = data['msg'] in python
+                console.log(data);
+                $document.getElementById('pet_img').src=data.image;
+                console.log('hi');
+            }; 
+            //jQuery('#pet_img').load('http://localhost:8080/update') 
+            
+            var myVar = setInterval(myTimer, 500);
+            function myTimer() {
+      
+            }*/
+        </script>
+    </head>    
+</html>
+<body>
+    <p id='test'>
+        <img id='pet_img' src='face.png'></img>
+    </p>
+</body>
