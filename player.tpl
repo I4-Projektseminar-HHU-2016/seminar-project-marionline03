@@ -31,6 +31,6 @@
             </table>
         </div>
     </div>
-    <footer> vocabulary pet game written in python </footer>
+    <footer> {{footer}} </footer>
 </body>
 </html>

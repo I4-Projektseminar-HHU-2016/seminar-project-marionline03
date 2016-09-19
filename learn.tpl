@@ -41,6 +41,6 @@
             </div>
         </div>
     </div>
-    <footer> vocabulary pet game written in python cc-by marionline </footer> 
+    <footer> {{footer}} </footer>
 </body>
 </html>

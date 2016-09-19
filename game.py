@@ -16,6 +16,7 @@ import json
 
 logging.basicConfig(filename='log.txt',level=logging.DEBUG)
 
+#TODO: export voc s json
 '''def make_json_vocabulary_data():
     data = read_everything_from_tabel_voc()
     # http://stackoverflow.com/questions/10695139/sort-a-list-of-tuples-by-2nd-item-integer-value
@@ -34,11 +35,8 @@ logging.basicConfig(filename='log.txt',level=logging.DEBUG)
 # make_json_vocabulary_data()'''
 
 NAV = [("Pet's home", '/play'),('Word-List', '/wordlist'),('Practice', '/learn'), ('Shopping', '/shop'),('Pet', '/pet'),('Player', '/player')]
+FOOTER = 'vocabulary pet game written in python -- vocabulary pet (Title), marionline(Author), github-repository(Source), ?(License)'
 #Font familiy:  Helvetica <- unix
-
-# example from doku
-'''@route('/wiki/<pagename>')            # matches /wiki/Learning_Python
-def show_wiki_page(pagename):'''
 
 @route('/pet_image')
 def set_pet_image(data_list):
@@ -49,61 +47,59 @@ def test():
     print('test')
     return template('test')
 
+def set_pet_images(mood):
+    if mood == 'normal':
+        happy_faces =['neutral01.png', 'neutral02.png', 'happy01.png', 'happy02.png']
+        face = random.choice(happy_faces)
+        speechbubble=''
+    if mood=='hungry':
+        unhappy_faces =['angry01.png', 'angry02.png', 'outch01.png', 'outch02.png']
+        face = random.choice(unhappy_faces)
+        speechbubble=random.choice(['want_food.png','think_of_eating00.png'])
+    return (face, speechbubble)
+
 @route('/update')
 def update():
     pet_data = read_everything_from_tabel_pet()
     id_num, name, life_points, current_life_points, current_state, body, face, deco = pet_data[0]
     current_mood_data = read_value_from_tabel_mood('name', 'id', current_state)
     current_mood = current_mood_data[0][0]
-    #print('current_mood:', current_mood) 
     mood_data = read_everything_from_tabel_mood()
     for element in mood_data:
-        #print(element)
         mood_id_num, mood_name, mood_max_value, mood_value = element
         if mood_name != current_mood:
             if mood_name == 'normal':
                 pass
             elif mood_value > 0:
                 result = mood_value -1
-                #print(result)
                 alter_tabel_mood_where('current_value', result, 'name', element[1])
             elif mood_value == 0:
-                #print("set mood to {} with id {}".format(mood_name, mood_id_num))
                 alter_tabel_pet('current_state', mood_id_num)
     
     pet_data = read_everything_from_tabel_pet()
     id_num, name, life_points, current_life_points, current_state, body, face, deco = pet_data[0]
     mood_data = read_value_from_tabel_mood('name', 'id', current_state)
     mood = mood_data[0][0]
-    if mood == 'normal':
-        happy_faces =['neutral01.png', 'neutral02.png', 'happy01.png', 'happy02.png']
-        face = random.choice(happy_faces)
-    else:
-        unhappy_faces =['angry01.png', 'angry02.png', 'outch01.png', 'outch02.png']
-        face = random.choice(unhappy_faces)
-    alter_tabel_pet('face_img', face)
-    output = {'face':face, 'body':body, 'deco':deco}
+    face, speechbubble = set_pet_images(mood)
+    output = {'face':face, 'body':body, 'deco':deco, 'speechbubble':speechbubble}
     return json.dumps(output)
 
 
 def give_item_to_pet(item):
-    data_effect = read_value_from_tabel_mood_changing_item('effect', 'item', item )
+    data_effect = read_value_from_tabel_mood_changing_item('effect', 'item', item)
     effect = data_effect[0][0]
-    #print(effect)
-    data_mood = read_value_from_tabel_mood_changing_item('mood', 'item', item )
+    data_mood = read_value_from_tabel_mood_changing_item('mood', 'item', item)
     effect_on = data_mood[0][0]
-    #print(effect_on)
-    
+    print('The item effects {}, with a value of {}'.format(effect_on, effect))
     mood_data = read_everything_from_tabel_mood()
     for element in mood_data:
-        id_num, name, max_value, current_value = element 
-        if name==effect_on and current_value < max_value:
+        id_num, name, max_value, current_value = element
+        if name == effect_on and current_value < max_value:
             current_value += effect
+            alter_tabel_pet('current_state', 2) # 2 is normal mood
             if current_value > max_value:
                 current_value = max_value
             alter_tabel_mood_where('current_value', current_value, 'id', id_num)
-
-#give_item_to_pet('Berry')
     
 @route('/json_player_data')
 def send_player_json():
@@ -115,17 +111,12 @@ def send_player_json():
 def server_static(filename):
     return static_file(filename, root=STATIC_PATH) #<- change this path according to your directory!     
 
-'''@route('/')
-@route('/index')
-def show_index():
-    redirect('/play')'''
-
 @route('/player')
 def player():
     data = read_everything_from_player_table()
     id_num, name, score, id_of_last_question, combo = data[0]
-#TODO: Optionbal add more info: statistics on VOC (per matplotlib data) + Badges
-    return template('player', menu=NAV, data=[id_num, name, score, combo])
+#TODO: Optional add more info: statistics on VOC (per matplotlib data) + Badges
+    return template('player', menu=NAV, footer=FOOTER, data=[id_num, name, score, combo])
 
 @route('/pet')
 def pet():
@@ -134,19 +125,14 @@ def pet():
     mood_data = read_value_from_tabel_mood('name', 'id', current_state)
     mood = mood_data[0][0]
 #TODO: Optional add more info: Age, Birthday, Favorite Food/Item/Voc
-    if mood == 'normal':
-        happy_faces =['neutral01.png', 'neutral02.png', 'happy01.png', 'happy02.png']
-        face = random.choice(happy_faces)
-    else:
-        unhappy_faces =['angry01.png', 'angry02.png', 'outch01.png', 'outch02.png']
-        face = random.choice(unhappy_faces)
+    face, speechbubble = set_pet_images(mood)
     alter_tabel_pet('face', face)
-    return template('pet', menu=NAV, data=[id_num, name, life_points, mood], body=body, face=face, deco=deco)
+    return template('pet', menu=NAV, footer=FOOTER, data=[id_num, name, life_points, mood], body=body, face=face, deco=deco, speechbubble=speechbubble,)
 
 @route('/wordlist')
 def wordlist():
     data = read_everything_from_tabel_voc()
-    return template('wordlist', menu=NAV, data=data)
+    return template('wordlist', menu=NAV, footer=FOOTER, data=data)
 
 @post('/wordlist')
 def edit_wordlist():
@@ -160,7 +146,7 @@ def edit_wordlist():
     alter_tabel_voc_where('question_language', question_language, 'id',id_num)
     alter_tabel_voc_where('answer_language', answer_language, 'id',id_num)
     data = read_everything_from_tabel_voc()
-    return template('wordlist', menu=NAV, data=data)
+    return template('wordlist', menu=NAV, footer=FOOTER, data=data)
 
 @route('/learn')
 def learn():
@@ -180,7 +166,7 @@ def learn():
     alter_tabel_player('id_of_last_question_asked', output[0])
     pet_data = read_everything_from_tabel_pet()
     pet_id_num, pet_name, pet_life_points, pet_current_life_points, pet_current_state, pet_body, pet_face, pet_deco = pet_data[0]
-    return template('learn', msg='', question=output, menu=NAV, body=pet_body, face=pet_face, deco=pet_deco) 
+    return template('learn', msg='', question=output, menu=NAV, footer=FOOTER, body=pet_body, face=pet_face, deco=pet_deco) 
 
 @route('/learn', method='POST')
 def learn_check_answer():
@@ -258,9 +244,9 @@ def learn_check_answer():
             my_dict[element[3]].append(element)
     keys = sorted(list(my_dict.keys()))
     output= random.choice(my_dict[keys[0]])
-    print('output: ', output[0])
+    #print('output: ', output[0])
     alter_tabel_player('id_of_last_question_asked', output[0])
-    return template('learn', msg=msg, question=output, menu=NAV, face=face, body=pet_body, deco=pet_deco) 
+    return template('learn', msg=msg, question=output, menu=NAV, footer=FOOTER, face=face, body=pet_body, deco=pet_deco) 
 
 @route('/shop')
 def shop():
@@ -268,7 +254,7 @@ def shop():
     score_data =read_value_from_whole_player_tabel('score')
     money = score_data[0][0] 
     data = read_everything_from_tabel_item()
-    return template('shop', data=data, money=money, menu=NAV) 
+    return template('shop', data=data, money=money, menu=NAV, footer=FOOTER) 
 
 
 @post('/shop')
@@ -283,22 +269,23 @@ def buy():
     if player_score[0][0] >= price:
         result = player_score[0][0] - price
         alter_tabel_player_where('score', result, 'id', player_id[0][0])
-        print('item_name', item_name)
+        #print('item_name', item_name)
         amount_data = read_value_from_tabel_inventory('amount', 'item_name', item_name)
-        print('amount_data', amount_data)
+        #print('amount_data', amount_data)
         if amount_data == None or amount_data == []:
-            print('writing tabel row: {}'.format(item_name))
+            #print('writing tabel row: {}'.format(item_name))
             write_tabel_inventory((item_name, 1))
         else:
             amount = amount_data[0][0]
-            print('amount', amount)
+            #print('amount', amount)
             amount += 1
-            print('You have {} {}s.'.format(amount, item_name))
+            #print('You have {} {}s.'.format(amount, item_name))
             alter_tabel_inventory_where('amount', amount, 'item_name', item_name)
     score_data =read_value_from_whole_player_tabel('score')
     money = score_data[0][0] 
     data = read_everything_from_tabel_item()
-    return template('shop', data=data, money=money, menu=NAV) 
+    return template('shop', data=data, money=money, menu=NAV, footer=FOOTER) 
+
 
 @route('/')
 @route('/index')
@@ -318,13 +305,8 @@ def play():
     id_num, name, life_points, current_life_points, current_state, body, face, deco = pet_data[0]
     mood_data = read_value_from_tabel_mood('name', 'id', current_state)
     mood = mood_data[0][0]
-    if mood == 'normal':
-        happy_faces =['neutral01.png', 'neutral02.png', 'happy01.png', 'happy02.png']
-        face = random.choice(happy_faces)
-    else:
-        unhappy_faces =['angry01.png', 'angry02.png', 'outch01.png', 'outch02.png']
-        face = random.choice(unhappy_faces)
-    return template('play', menu=NAV, inventory=inventory_list, face=face, body=body, deco=deco, inventory_empty=inventory_empty) 
+    face, speechbubble =  set_pet_images(mood)
+    return template('play', menu=NAV, footer=FOOTER, inventory=inventory_list, face=face, body=body, deco=deco, speechbubble=speechbubble,inventory_empty=inventory_empty) 
 
 
 @route('/play', method='POST')
@@ -348,8 +330,8 @@ def post_play():
         amount = amount_data[0][0]
         amount -= 1
         alter_tabel_inventory_where('amount', amount, 'item_name', name_item_clicked)  
+    give_item_to_pet(name)
     #reload
-    #delete_amount_zero_rows_from_tabel()
     inventory_data=read_everything_from_table_inventory()
     inventory_list = []
     inventory_empty=True
@@ -364,12 +346,7 @@ def post_play():
     id_num, name, life_points, current_life_points, current_state, body, face, deco = pet_data[0]
     mood_data = read_value_from_tabel_mood('name', 'id', current_state)
     mood = mood_data[0][0]
-    if mood == 'normal':
-        happy_faces =['neutral01.png', 'neutral02.png', 'happy01.png', 'happy02.png']
-        face = random.choice(happy_faces)
-    else:
-        unhappy_faces =['angry01.png', 'angry02.png', 'outch01.png', 'outch02.png']
-        face = random.choice(unhappy_faces)
-    return template('play', menu=NAV, inventory=inventory_list, face=face, body=body, deco=deco, inventory_empty=inventory_empty)
+    face, speechbubble = set_pet_images(mood)    
+    return template('play', menu=NAV, footer=FOOTER, inventory=inventory_list, face=face, body=body, deco=deco, speechbubble=speechbubble, inventory_empty=inventory_empty)
   
 run(host=HOST, port=PORT, debug=True, reloader=True)

@@ -42,6 +42,6 @@
     <a href="create_account">Make an account and play!</a>
     <br>
     <a href="information">Learn more about the game!</a>-->
-    <footer> vocabulary pet game written in python </footer>
+    <footer> {{footer}} </footer>
 </body>
 </html>

@@ -26,6 +26,9 @@
                 document.getElementById('body').src= data.body;
                 document.getElementById('face').src= data.face;
                 document.getElementById('deco').src= data.deco;
+                if (data.speechbubble !='') {
+                    document.getElementById('speechbubble').src= data.speechbubble;
+                };
             });
         }
        
@@ -47,6 +50,9 @@
                 <img id='body' src='{{body}}' id="body" style="position: absolute; left: 45%; top: -10; z-index: 0;"></img>
                 <img id='face'src='{{face}}' id="face" style="position: absolute; left: 45%; top: -10; z-index: 1;"></</img>
                 <img id='deco'src='{{deco}}' id="deco" style="position: absolute; left: 45%; top: -10; z-index: 2;"></</img>
+                %if speechbubble !='':
+                    <img id='speechbubble' src='{{speechbubble}}' style="position: absolute; left: 35%; top: -10; z-index: 3;"></</img>
+                %end
             </center>
         </div>
     <div id='box2'>
@@ -68,6 +74,6 @@
                     %end
                 %end
     </div>
-    <footer> vocabulary pet game written in python </footer>
+    <footer> {{footer}} </footer>
 </body>
 </html>
