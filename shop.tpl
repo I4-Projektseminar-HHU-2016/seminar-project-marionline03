@@ -19,7 +19,7 @@
                 <tr>
                     <th class='center'>name</th>
                     <th class='center'>price</th>
-                    <th class='center'>decription</th>
+                    <th class='center'>description</th>
                     <th class='center'>image</th>
                     <th class='center'>buy?</th>
                 </tr>

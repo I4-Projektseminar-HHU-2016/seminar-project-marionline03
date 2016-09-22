@@ -12,7 +12,7 @@
             %end
        </nav>
     </header>
-    <div id='box_wordlist'></div>
+    <div id='box_wordlist'>
         <div id='box2_wordlist'>
             <table>
                 <tr>
