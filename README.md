@@ -137,6 +137,6 @@ graphics - [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0
 ## Acknowledgments
 * Thanks to the bottle project for making bottle :)
 * Thanks to Marie for the alien idea
-* Thanks to everyone who contributed inspiration and encouragement =D
+* Thanks to everyone who contributed inspiration, knowledge and encouragement =D
 
 *template inspired by [https://gist.github.com/PurpleBooth/109311bb0361f32d87a2](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)*
