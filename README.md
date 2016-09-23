@@ -36,18 +36,14 @@ No-anytime-soon - Features:
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine.
-Download the file from git hub, unzip file if necessary.
-Follow the installation instructions. 
 
-Or if Bottle is already installed open the program’s folder with terminal/shell and run the game.py:
+Download the file from git hub, unzip file if necessary. Follow the installation instructions. 
+If Bottle is already installed open the program’s folder with terminal/shell and run the game.py:
 ```
 python3 game.py
 ```
-
-This will start the bottle server. 
-See the Fourth Step of Installing Instructions for more advice.
+This will start the bottle server. See the Fourth Step of Installing Instructions for more advice.
  
-
 ### Prerequisites
 You need python3 and the bottle-framework on your machine.
 
@@ -57,29 +53,27 @@ Check if you have python3 by typing in the shell/terminal:
 ```
 python3
 ```
-
 You should see something like this:
-
 ```
 Python 3.4.2 (default, Oct  8 2014, 13:14:40) 
 [GCC 4.9.1] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
-
 If not you need to install python3.
 
-First Step: Install Bottle
-Next check if bottle is installed, by typing import bottle in the python shell/terminal.
-If not, install bottle using either you favourite package manager or type pip3 install bottle in the python shell. 
-For more information see the documentation about bottle at [http://bottlepy.org/docs/0.12/tutorial.html#installation]
+#### First Step: Install Bottle
+To check if bottle is installed type 'import bottle' in the python shell/terminal.
+If you see and Error message that indicates it is not installed. To install bottle use either you favourite package manager or type 'pip3 install bottle' in the shell (after exit()-ing the pythonshell). 
+For more information on installing bottle see the documentation at [http://bottlepy.org/docs/0.12/tutorial.html#installation]
 
-Optional Step: The program 'pip3' is currently not installed. You can install it via apt-get or by using the paket manager:
-
+#### Optional Step: No pip3 installed
+The program 'pip3' is currently not installed. You can install it via apt-get or by using the paket manager:
 ```
 sudo apt-get install python3-pip
 ```
-Optional Step: Maybe you need to install setuptools as well:
+#### Optional Step: no setuptools installed
+Maybe you need to install setuptools as well:
 ```
 pip3 install setuptools
 ```
@@ -89,37 +83,32 @@ Finally, install the Bottleframework with:
 pip3 install bottle
 ```
 
-Third Step:
-Edit the file path in hidden_server_data.py
-I do not recommend using the program anywhere but locally on you machine.
+#### Third Step:
+Edit the file path in hidden_server_data.py By the way, I do not recommend using the program anywhere, but locally on you machine.
 ```
 # Name or IP of the machine running vocabulary pet server
 HOST = 'localhost' 
 # Port Name of vocabulary pet server
 PORT = '8080'
 ```
-
-Attention, this is important. You need to change the file path to the static folder of the project.
-It's there the server looks for images, with an incorrect file path the program will start, but it will look very ugly.
+Attention, this is important! 
+You need to change the file path to the static folder of the project. It's there the server looks for images, with an incorrect file path the program will start, but it will look very ugly.
 The path could look like this: '/home/mint/Downloads/seminar-project-marionline03-master/static' if you have extracted the zip file in the Download folder.
 ```
 # Please fill into the brakets the root directory of vocabulary pet
 # Example: STATIC_PATH = '/home/user/vocabulary_pet/static'
 STATIC_PATH = '/home/mint/Downloads/seminar-project-marionline03-master/static'
 ```
-
-Fourth Step:
+Fourth Step: Start the program
 Navigate to the folder where the program's files are.
 ```
 cd seminar-project-marionline03-master/
 ```
-
 To start run game.py, type:
 ```
 python3 game.py
 ```
-This will start the bottle server. Use your web browser to navigate to the location if you did not change port and host it will be "localhost:8080".
-If everything worked out, you will see the pet's page in your web browser.
+This will start the bottle server. Use your web browser to navigate to the location if you did not change port and host it will be "localhost:8080". If everything worked out, you will see the pet's page in your web browser.
 
 ## Versioning
 I do  not use anything for versioning yet. 
